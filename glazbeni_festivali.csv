@@ -1,0 +1,34 @@
+festival_id,naziv_festivala,država,grad,datum_početka,datum_završetka,cijena_ulaznica,žanrovi_glazbe,organizator,web_stranica,ime_izvodjaca
+1,Forestland,Republika Hrvatska,Mali Mihaljevec,2025-07-18,2025-07-19,35.00,Multiple,"Boris Novak, Nikola Horvat, Ivan Barlek",https://forestland.hr/frequently-asked-questions,Baby Lasagna
+1,Forestland,Republika Hrvatska,Mali Mihaljevec,2025-07-18,2025-07-19,35.00,Multiple,"Boris Novak, Nikola Horvat, Ivan Barlek",https://forestland.hr/frequently-asked-questions,Hiljson Mandela
+1,Forestland,Republika Hrvatska,Mali Mihaljevec,2025-07-18,2025-07-19,35.00,Multiple,"Boris Novak, Nikola Horvat, Ivan Barlek",https://forestland.hr/frequently-asked-questions,Miach
+2,Terezijana,Republika Hrvatska,Bjelovar,2025-06-18,2025-06-22,0.00,Multiple,Turistička zajednica Bjelovar,https://terezijana.hr/,Elemental
+2,Terezijana,Republika Hrvatska,Bjelovar,2025-06-18,2025-06-22,0.00,Multiple,Turistička zajednica Bjelovar,https://terezijana.hr/,Dubioza Kolektiv
+2,Terezijana,Republika Hrvatska,Bjelovar,2025-06-18,2025-06-22,0.00,Multiple,Turistička zajednica Bjelovar,https://terezijana.hr/,Hiljson Mandela
+2,Terezijana,Republika Hrvatska,Bjelovar,2025-06-18,2025-06-22,0.00,Multiple,Turistička zajednica Bjelovar,https://terezijana.hr/,Miach
+3,INmusic,Republika Hrvatska,Zagreb,2025-06-22,2025-06-24,122.00,EDM,Zoran Marić,https://www.inmusicfestival.com/en,Kasabian
+3,INmusic,Republika Hrvatska,Zagreb,2025-06-22,2025-06-24,122.00,EDM,Zoran Marić,https://www.inmusicfestival.com/en,The Streets
+3,INmusic,Republika Hrvatska,Zagreb,2025-06-22,2025-06-24,122.00,EDM,Zoran Marić,https://www.inmusicfestival.com/en,YARD
+4,Ultra Europe,Republika Hrvatska,Split,2025-07-10,2025-07-12,120.00,EDM,Ultra Worldwide,https://ultraeurope.com/,Martin Garrix
+4,Ultra Europe,Republika Hrvatska,Split,2025-07-10,2025-07-12,120.00,EDM,Ultra Worldwide,https://ultraeurope.com/,Hardwell
+4,Ultra Europe,Republika Hrvatska,Split,2025-07-10,2025-07-12,120.00,EDM,Ultra Worldwide,https://ultraeurope.com/,Boris Brejcha
+5,Coachella,"Kalifornija, SAD",Indio,2025-04-11,2025-04-13,549.00,Pop,Goldenvoice,https://www.coachella.com/,Lady Gaga
+5,Coachella,"Kalifornija, SAD",Indio,2025-04-11,2025-04-13,549.00,Pop,Goldenvoice,https://www.coachella.com/,Benson Boone
+5,Coachella,"Kalifornija, SAD",Indio,2025-04-11,2025-04-13,549.00,Pop,Goldenvoice,https://www.coachella.com/,Charlie XCX
+6,Sea Star Festival,Republika Hrvatska,Umag,2025-05-22,2025-05-25,55.00,Multiple,EXIT tim,https://seastarfestival.com/,30zona
+6,Sea Star Festival,Republika Hrvatska,Umag,2025-05-22,2025-05-25,55.00,Multiple,EXIT tim,https://seastarfestival.com/,Voyage
+6,Sea Star Festival,Republika Hrvatska,Umag,2025-05-22,2025-05-25,55.00,Multiple,EXIT tim,https://seastarfestival.com/,Loreen
+6,Sea Star Festival,Republika Hrvatska,Umag,2025-05-22,2025-05-25,55.00,Multiple,EXIT tim,https://seastarfestival.com/,Lost Frequencies
+7,Glastonbury Festival,Ujedinjeno Kraljevstvo,Pilton,2025-06-25,2025-06-29,345.00,Multiple,"Michael Eavis, Emily Eavis",https://www.glastonburyfestivals.co.uk/,Coldplay
+7,Glastonbury Festival,Ujedinjeno Kraljevstvo,Pilton,2025-06-25,2025-06-29,345.00,Multiple,"Michael Eavis, Emily Eavis",https://www.glastonburyfestivals.co.uk/,Florence + The Machine
+7,Glastonbury Festival,Ujedinjeno Kraljevstvo,Pilton,2025-06-25,2025-06-29,345.00,Multiple,"Michael Eavis, Emily Eavis",https://www.glastonburyfestivals.co.uk/,Billie Eilish
+8,Tomorrowland,Belgija,Boom,2025-10-10,2025-10-12,350.00,EDM,We Are One World,https://www.tomorrowland.com/,Armin van Buuren
+8,Tomorrowland,Belgija,Boom,2025-10-10,2025-10-12,350.00,EDM,We Are One World,https://www.tomorrowland.com/,David Guetta
+8,Tomorrowland,Belgija,Boom,2025-10-10,2025-10-12,350.00,EDM,We Are One World,https://www.tomorrowland.com/,Tiësto
+9,EXIT Festival,Srbija,Novi Sad,2025-07-10,2025-07-13,125.00,Multiple,EXIT tim,https://www.exitfest.org,Boris Brejcha
+9,EXIT Festival,Srbija,Novi Sad,2025-07-10,2025-07-13,125.00,Multiple,EXIT tim,https://www.exitfest.org,Loreen
+9,EXIT Festival,Srbija,Novi Sad,2025-07-10,2025-07-13,125.00,Multiple,EXIT tim,https://www.exitfest.org,Tiësto
+9,EXIT Festival,Srbija,Novi Sad,2025-07-10,2025-07-13,125.00,Multiple,EXIT tim,https://www.exitfest.org,The Prodigy
+10,Fusion Festival,Njemačka,Lärz,2025-06-25,2025-06-29,180.00,Multiple,Kulturkosmos Müritz,https://www.fusion-festival.de,How Yes No
+10,Fusion Festival,Njemačka,Lärz,2025-06-25,2025-06-29,180.00,Multiple,Kulturkosmos Müritz,https://www.fusion-festival.de,EGO
+10,Fusion Festival,Njemačka,Lärz,2025-06-25,2025-06-29,180.00,Multiple,Kulturkosmos Müritz,https://www.fusion-festival.de,Im Dunkeln

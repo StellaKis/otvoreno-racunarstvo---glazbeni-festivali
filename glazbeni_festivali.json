@@ -1,0 +1,187 @@
+[{
+    "festival_id": 1,
+    "naziv_festivala": "Forestland",
+    "država": "Republika Hrvatska",
+    "grad": "Mali Mihaljevec",
+    "datum_početka": "2025-07-18",
+    "datum_završetka": "2025-07-19",
+    "cijena_ulaznica": 35.00,
+    "žanrovi_glazbe": "Multiple",
+    "organizator": "Boris Novak, Nikola Horvat, Ivan Barlek",
+    "web_stranica": "https://forestland.hr/frequently-asked-questions",
+    "izvođači": [{
+        "ime_izvodjaca": "Baby Lasagna"
+    }, {
+        "ime_izvodjaca": "Hiljson Mandela"
+    }, {
+        "ime_izvodjaca": "Miach"
+    }]
+}, {
+    "festival_id": 2,
+    "naziv_festivala": "Terezijana",
+    "država": "Republika Hrvatska",
+    "grad": "Bjelovar",
+    "datum_početka": "2025-06-18",
+    "datum_završetka": "2025-06-22",
+    "cijena_ulaznica": 0.00,
+    "žanrovi_glazbe": "Multiple",
+    "organizator": "Turistička zajednica Bjelovar",
+    "web_stranica": "https://terezijana.hr/",
+    "izvođači": [{
+        "ime_izvodjaca": "Hiljson Mandela"
+    }, {
+        "ime_izvodjaca": "Miach"
+    }, {
+        "ime_izvodjaca": "Elemental"
+    }, {
+        "ime_izvodjaca": "Dubioza Kolektiv"
+    }]
+}, {
+    "festival_id": 3,
+    "naziv_festivala": "INmusic",
+    "država": "Republika Hrvatska",
+    "grad": "Zagreb",
+    "datum_početka": "2025-06-22",
+    "datum_završetka": "2025-06-24",
+    "cijena_ulaznica": 122.00,
+    "žanrovi_glazbe": "EDM",
+    "organizator": "Zoran Marić",
+    "web_stranica": "https://www.inmusicfestival.com/en",
+    "izvođači": [{
+        "ime_izvodjaca": "Kasabian"
+    }, {
+        "ime_izvodjaca": "The Streets"
+    }, {
+        "ime_izvodjaca": "YARD"
+    }]
+}, {
+    "festival_id": 4,
+    "naziv_festivala": "Ultra Europe",
+    "država": "Republika Hrvatska",
+    "grad": "Split",
+    "datum_početka": "2025-07-10",
+    "datum_završetka": "2025-07-12",
+    "cijena_ulaznica": 120.00,
+    "žanrovi_glazbe": "EDM",
+    "organizator": "Ultra Worldwide",
+    "web_stranica": "https://ultraeurope.com/",
+    "izvođači": [{
+        "ime_izvodjaca": "Martin Garrix"
+    }, {
+        "ime_izvodjaca": "Hardwell"
+    }, {
+        "ime_izvodjaca": "Boris Brejcha"
+    }]
+}, {
+    "festival_id": 5,
+    "naziv_festivala": "Coachella",
+    "država": "Kalifornija, SAD",
+    "grad": "Indio",
+    "datum_početka": "2025-04-11",
+    "datum_završetka": "2025-04-13",
+    "cijena_ulaznica": 549.00,
+    "žanrovi_glazbe": "Pop",
+    "organizator": "Goldenvoice",
+    "web_stranica": "https://www.coachella.com/",
+    "izvođači": [{
+        "ime_izvodjaca": "Lady Gaga"
+    }, {
+        "ime_izvodjaca": "Benson Boone"
+    }, {
+        "ime_izvodjaca": "Charlie XCX"
+    }]
+}, {
+    "festival_id": 7,
+    "naziv_festivala": "Glastonbury Festival",
+    "država": "Ujedinjeno Kraljevstvo",
+    "grad": "Pilton",
+    "datum_početka": "2025-06-25",
+    "datum_završetka": "2025-06-29",
+    "cijena_ulaznica": 345.00,
+    "žanrovi_glazbe": "Multiple",
+    "organizator": "Michael Eavis, Emily Eavis",
+    "web_stranica": "https://www.glastonburyfestivals.co.uk/",
+    "izvođači": [{
+        "ime_izvodjaca": "Coldplay"
+    }, {
+        "ime_izvodjaca": "Florence + The Machine"
+    }, {
+        "ime_izvodjaca": "Billie Eilish"
+    }]
+}, {
+    "festival_id": 9,
+    "naziv_festivala": "EXIT Festival",
+    "država": "Srbija",
+    "grad": "Novi Sad",
+    "datum_početka": "2025-07-10",
+    "datum_završetka": "2025-07-13",
+    "cijena_ulaznica": 125.00,
+    "žanrovi_glazbe": "Multiple",
+    "organizator": "EXIT tim",
+    "web_stranica": "https://www.exitfest.org",
+    "izvođači": [{
+        "ime_izvodjaca": "Boris Brejcha"
+    }, {
+        "ime_izvodjaca": "Loreen"
+    }, {
+        "ime_izvodjaca": "Tiësto"
+    }, {
+        "ime_izvodjaca": "The Prodigy"
+    }]
+}, {
+    "festival_id": 10,
+    "naziv_festivala": "Fusion Festival",
+    "država": "Njemačka",
+    "grad": "Lärz",
+    "datum_početka": "2025-06-25",
+    "datum_završetka": "2025-06-29",
+    "cijena_ulaznica": 180.00,
+    "žanrovi_glazbe": "Multiple",
+    "organizator": "Kulturkosmos Müritz",
+    "web_stranica": "https://www.fusion-festival.de",
+    "izvođači": [{
+        "ime_izvodjaca": "How Yes No"
+    }, {
+        "ime_izvodjaca": "EGO"
+    }, {
+        "ime_izvodjaca": "Im Dunkeln"
+    }]
+}, {
+    "festival_id": 8,
+    "naziv_festivala": "Tomorrowland",
+    "država": "Belgija",
+    "grad": "Boom",
+    "datum_početka": "2025-10-10",
+    "datum_završetka": "2025-10-12",
+    "cijena_ulaznica": 350.00,
+    "žanrovi_glazbe": "EDM",
+    "organizator": "We Are One World",
+    "web_stranica": "https://www.tomorrowland.com/",
+    "izvođači": [{
+        "ime_izvodjaca": "Armin van Buuren"
+    }, {
+        "ime_izvodjaca": "David Guetta"
+    }, {
+        "ime_izvodjaca": "Tiësto"
+    }]
+}, {
+    "festival_id": 6,
+    "naziv_festivala": "Sea Star Festival",
+    "država": "Republika Hrvatska",
+    "grad": "Umag",
+    "datum_početka": "2025-05-22",
+    "datum_završetka": "2025-05-25",
+    "cijena_ulaznica": 55.00,
+    "žanrovi_glazbe": "Multiple",
+    "organizator": "EXIT tim",
+    "web_stranica": "https://seastarfestival.com/",
+    "izvođači": [{
+        "ime_izvodjaca": "30zona"
+    }, {
+        "ime_izvodjaca": "Voyage"
+    }, {
+        "ime_izvodjaca": "Loreen"
+    }, {
+        "ime_izvodjaca": "Lost Frequencies"
+    }]
+}]
