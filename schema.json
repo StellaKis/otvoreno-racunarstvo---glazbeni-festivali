@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/StellaKis/otvoreno-racunarstvo---glazbeni-festivali/blob/main/glazbeni_festivali.json",
+  "title": "Glazbeni festivali",
+  "type": "array",
+  "description": "Skup podataka o glazbenim festivalima",
+  "items": {
+    "type": "object",
+    "title": "Festival",
+    "description": "Objekt koji sadrži sve podatke o jednom festivalu",
+    "properties": {
+      "festival_id": {
+        "type": "number",
+        "title": "festival_id",
+        "description": "id festivala"
+      },
+      "naziv_festivala": {
+        "type": "string",
+        "title": "naziv_festivala",
+        "description": "naziv festivala"
+    },
+      "država": {
+        "type": "string",
+        "title": "država",
+        "description": "država u kojoj se festival održava"
+      },
+      "grad": {
+        "type": "string",
+        "title": "grad",
+        "description": "grad u kojem se festival održava"   
+      },
+      "datum_početka": {
+        "type": "string", 
+        "title": "datum_početka",
+        "description": "datum početka festivala"
+      },
+      "datum_završetka": {
+        "type": "string",
+        "title": "datum_završetka",
+        "description": "datum završetka festivala"
+      },
+      "cijena_ulaznica": {
+        "type": "number",
+        "title": "cijena_ulaznica",
+        "description": "cijena ulaznica za festival u eurima"
+      },
+      "žanrovi_glazbe": {
+        "type": "string",
+        "title": "žanrovi_glazbe",
+        "description": "žanrovi glazbe koji se izvode na festivalu"
+      },
+      "organizator": {
+        "type": "string",
+        "title": "organizator",
+        "description": "organizator festivala"
+      },
+      "web_stranica": {
+        "type": "string",
+        "title": "web_stranica",
+        "description": "web stranica festivala"
+      },
+      "izvođači": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ime_izvodjaca": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ime_izvodjaca"
+          ]
+        }
+      }
+    },
+    "required": [
+      "festival_id",
+      "naziv_festivala",
+      "država",
+      "grad",
+      "datum_početka",
+      "datum_završetka",
+      "cijena_ulaznica",
+      "žanrovi_glazbe",
+      "organizator",
+      "web_stranica",
+      "izvođači"
+    ]
+  }
+}
