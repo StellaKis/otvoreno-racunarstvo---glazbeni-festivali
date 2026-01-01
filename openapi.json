@@ -1,0 +1,449 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "API glazbenih festivala",
+        "description": "REST API za upravljanje i pregled glazbenih festivala",
+        "version": "1.0.0", 
+        "contact": {
+            "name": "Stella Kiš",
+            "email": "sk53957@fer.hr"
+        },
+        "license": {
+            "name": "Creative Commons Zero v1.0"
+        }
+    },
+    "paths": {
+        "/api": {
+            "get": {
+                "summary": "Dohvat svih festivala",
+                "responses": {
+                    "200": {
+                        "description": "Dohvaćena lista festivala",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/FestivalListResponse" }
+                                }
+                            }
+                    },
+                    "500": {
+                        "description": "Greška na serveru",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Dodavanje novog festivala",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": { "$ref": "#/components/schemas/Festival" }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Festival uspješno dodan",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/CreateFestivalResponse" }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Neispravni ili nepotpuni podaci",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }   
+                    },
+                    "500": {
+                        "description": "Greška na serveru",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/festivali": {
+            "get": {
+                "summary": "Pretraživanje festivala",
+                "parameters": [
+                {
+                    "name": "query",
+                    "in": "query",
+                    "required": false,
+                    "type": "string" 
+                },
+                {
+                    "name": "atribut",
+                    "in": "query",
+                    "required": false,
+                    "type": "string" 
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Filtrirana lista festivala",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/FestivalListResponse"}
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Greška na serveru",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/festivali/{id}": {
+            "get": {
+                "summary": "Dohvat festivala po ID-u",
+                "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64"
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Festival pronađen",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/FestivalResponse" }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Festival nije pronađen",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        } 
+                    },
+                    "500": {
+                        "description": "Greška na serveru",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Brisanje festivala",
+                "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64"
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Festival obrisan",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Festival nije pronađen",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        } 
+                    },
+                    "500": {
+                        "description": "Greška na serveru",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/festivali/{id}/izvodjaci": {
+            "get": {
+                "summary": "Dohvat izvođača za festival",
+                "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista izvođača za festival",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/IzvodjaciResponse" }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Festival nije pronađen",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Greška na serveru",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/festivali/{id}/grad": {
+            "put": {
+                "summary": "Ažuriranje grada festivala",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                        "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": { 
+                        "application/json": {
+                            "schema": { "$ref": "#/components/schemas/GradJSON" }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Festival ažuriran",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/FestivalResponse" }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Festival nije pronađen",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        } 
+                    },
+                    "500": {
+                        "description": "Greška na serveru",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/festivali/drzava/{drzava}": {
+            "get": {
+                "summary": "Dohvat festivala po državi",
+                "description": "Vraća listu festivala koji se održavaju u zadanoj državi.",
+                "parameters": [
+                    {
+                        "name": "drzava",
+                        "in": "path",
+                        "required": true,
+                        "description": "Naziv države",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Uspješno dohvaćeni festivali",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/FestivalListResponse" }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Greška na serveru",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/festivali/grad/{grad}": {
+            "get": {
+                "summary": "Dohvat festivala po gradu",
+                "description": "Vraća listu festivala koji se održavaju u zadanom gradu.",
+                "parameters": [
+                {
+                    "name": "grad",
+                    "in": "path",
+                    "required": true,
+                    "description": "Naziv grada",
+                    "type": "string"
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Uspješno dohvaćeni festivali",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/FestivalListResponse" } 
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Greška na serveru",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    "components": {
+        "schemas": {
+            "Festival": {
+                "type": "object",
+                "properties": {
+                    "festival_id": { "type": "integer", "example": 1 },
+                    "naziv_festivala": { "type": "string", "example": "INmusic Festival" },
+                    "država": { "type": "string", "example": "Hrvatska" },
+                    "grad": { "type": "string", "example": "Zagreb" },
+                    "datum_početka": { "type": "string", "format": "date", "example": "2024-06-24" },
+                    "datum_završetka": { "type": "string", "format": "date", "example": "2024-06-26" },
+                    "cijena_ulaznica": { "type": "number", "example": 120.00 },
+                    "žanrovi_glazbe": { "type": "string", "example": "Rock, Indie" },
+                    "organizator": { "type": "string", "example": "INmusic d.o.o." },
+                    "web_stranica": { "type": "string", "example": "https://inmusicfestival.com" },
+                    "izvodjaci": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                    }
+                },
+                "required": ["festival_id", "naziv_festivala", "država", "grad", "datum_početka", "datum_završetka", "cijena_ulaznica", "žanrovi_glazbe", "organizator", "web_stranica" ,"izvodjaci"]
+            },
+            "FestivalResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {"type": "string"},
+                    "message": {"type": "string"},
+                    "response": { "$ref": "#/components/schemas/Festival"}
+                }, 
+                "required": ["status", "message", "response"]
+            },
+            "ErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {"type": "string"},
+                    "message": {"type": "string"},
+                    "response": {
+                        "type": "string",
+                        "nullable": true,
+                        "example": null
+                    }
+                },
+                "required": ["status", "message", "response"]
+            },
+            "FestivalListResponse": {
+                "type": "object",
+                "properties": {
+                    "status": { "type": "string" },
+                    "message": { "type": "string" },
+                    "response": {
+                        "type": "array",
+                        "items": { "$ref": "#/components/schemas/Festival" }
+                    }
+                },
+                "required": ["status", "message", "response"]
+            },
+            "CreateFestivalResponse": {
+                "type": "object",
+                "properties": {
+                    "status": { "type": "string" },
+                    "message": { "type": "string" },
+                    "response": {
+                        "type": "object",
+                        "properties": {
+                            "festival_id": {
+                            "type": "integer"
+                            }
+                        },
+                        "required": ["festival_id"]
+                    }
+                },
+                "required": ["status", "message", "response"]
+            },
+            "IzvodjaciResponse": {
+                "type": "object",
+                "properties": {
+                    "status": { "type": "string" },
+                    "message": { "type": "string" },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "ime_izvodjaca": { "type": "string" }
+                            },
+                            "required": ["ime_izvodjaca"]
+                        }
+                    }
+                },
+                "required": ["status", "message", "response"]
+            },
+            "GradJSON": {
+                "type": "object",
+                "properties": {
+                    "grad": { "type": "string" }
+                },
+                "required": ["grad"]
+            }
+        }
+    }
+}
