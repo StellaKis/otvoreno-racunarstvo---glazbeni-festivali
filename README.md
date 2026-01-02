@@ -43,6 +43,6 @@ Tablica `nastupi` – povezna tablica koja povezuje festivale i izvođače
 - JSON datoteka 
 - SQL dump baze podataka 
 - README.md i LICENSE
-- index.html
+- index.html i datatable.html
 - server.js
 - openapi.json
