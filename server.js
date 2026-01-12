@@ -2,12 +2,47 @@ const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
 const { Parser } = require('json2csv');
+const fs = require('fs');
+const path = require('path');
+
+const { auth, requiresAuth } = require('express-openid-connect');
 
 const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
+
+const config = {
+  authRequired: false,
+  auth0Logout: false,
+  secret: 'tajna1234567890',
+  baseURL: 'http://localhost:3000',
+  clientID: 'aJpFotEyAEul62q6bdPot844SgMfkVwN',
+  issuerBaseURL: 'https://dev-48knub1ve523umrc.us.auth0.com'
+};
+
+app.use(auth(config));
+
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
+
+app.get('/api/auth/status', (req, res) => {
+  res.json({
+    authenticated: req.oidc.isAuthenticated(),
+    user: req.oidc.isAuthenticated() ? req.oidc.user : null
+  });
+});
+
+app.get('/api/profile', requiresAuth(), (req, res) => {
+  res.json({
+    status: "OK",
+    response: req.oidc.user
+  });
+});
+
 
 const pool = new Pool({
   user: "postgres",
@@ -15,6 +50,38 @@ const pool = new Pool({
   database: "glazbeni_festivali",
   password: "bazepodataka",
   port: 5432,
+});
+
+app.post('/api/refresh', requiresAuth(), async (req, res) => {
+  try {
+    const jsonRes = await fetch('http://localhost:3000/api/festivali/json?query=&atribut=');
+    const jsonData = await jsonRes.json();
+
+    const jsonPath = path.join(__dirname, 'public', 'glazbeni_festivali.json');
+    fs.writeFileSync(jsonPath, JSON.stringify(jsonData, null, 2), 'utf8');
+
+    const csvRes = await fetch('http://localhost:3000/api/festivali/csv?query=&atribut=');
+    const csvText = await csvRes.text();
+
+    const csvPath = path.join(__dirname, 'public', 'glazbeni_festivali.csv');
+    fs.writeFileSync(csvPath, csvText, 'utf8');
+
+    res.json({
+      status: "OK",
+      message: "Preslike osvježene",
+      files: {
+        json: '/glazbeni_festivali.json',
+        csv: '/glazbeni_festivali.csv'
+      }
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      status: "ERROR",
+      message: "Greška pri osvježavanju preslika"
+    });
+  }
 });
 
 app.get("/api/festivali", async (req, res) => {
@@ -78,8 +145,38 @@ app.get('/api/festivali/json', async (req, res) => {
   const { query = '', atribut = 'svi' } = req.query;
   try {
     const result = await pool.query(buildSQL(query, atribut), buildParams(query));
+
+    const festivali = result.rows.map(festival => ({
+      "festival_id": festival.festival_id,
+      "naziv_festivala": festival.naziv_festivala,
+      "lokacija": {
+        "@type": "Place",
+        "grad": festival.grad,
+        "država": festival.država
+      },
+      "datum_početka": festival.datum_početka,
+      "datum_završetka": festival.datum_završetka,
+      "cijena_ulaznica": festival.cijena_ulaznica,
+      "žanrovi_glazbe": festival.žanrovi_glazbe,
+      "organizator": festival.organizator,
+      "web_stranica": festival.web_stranica,
+      "izvođači": festival.izvođači
+    }));
+
+    const jsonLD = {
+      "@context": {
+        "@vocab": "http://schema.org/",
+        "naziv_festivala": "name",
+        "grad": "addressLocality",
+        "država": "addressCountry"
+      },
+      "festivali": festivali
+    };
+
     res.setHeader('Content-Disposition', 'attachment; filename=glazbeni_festivali.json');
-    res.json(result.rows);
+    res.setHeader('Content-Type', 'application/json');
+
+    res.json(jsonLD);
   } catch (err) {
     console.error(err);
     res.status(500).send('Greška pri generiranju JSON-a');
@@ -495,7 +592,7 @@ app.use((req, res, next) => {
   });
 });
 
-// globalni error handling
+// globalni error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
