@@ -1,0 +1,160 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "naziv_festivala": "name",
+    "grad": "addressLocality",
+    "država": "addressCountry"
+  },
+  "festivali": [
+    {
+      "festival_id": 1,
+      "naziv_festivala": "Forestland",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Mali Mihaljevec",
+        "država": "Republika Hrvatska"
+      },
+      "datum_početka": "2025-07-17T22:00:00.000Z",
+      "datum_završetka": "2025-07-18T22:00:00.000Z",
+      "cijena_ulaznica": "35.00",
+      "žanrovi_glazbe": "Multiple",
+      "organizator": "Boris Novak, Nikola Horvat, Ivan Barlek",
+      "web_stranica": "https://forestland.hr/frequently-asked-questions"
+    },
+    {
+      "festival_id": 2,
+      "naziv_festivala": "Terezijana",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Bjelovar",
+        "država": "Republika Hrvatska"
+      },
+      "datum_početka": "2025-06-17T22:00:00.000Z",
+      "datum_završetka": "2025-06-21T22:00:00.000Z",
+      "cijena_ulaznica": "0.00",
+      "žanrovi_glazbe": "Multiple",
+      "organizator": "Turistička zajednica Bjelovar",
+      "web_stranica": "https://terezijana.hr/"
+    },
+    {
+      "festival_id": 3,
+      "naziv_festivala": "INmusic",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Zagreb",
+        "država": "Republika Hrvatska"
+      },
+      "datum_početka": "2025-06-21T22:00:00.000Z",
+      "datum_završetka": "2025-06-23T22:00:00.000Z",
+      "cijena_ulaznica": "122.00",
+      "žanrovi_glazbe": "EDM",
+      "organizator": "Zoran Marić",
+      "web_stranica": "https://www.inmusicfestival.com/en"
+    },
+    {
+      "festival_id": 4,
+      "naziv_festivala": "Ultra Europe",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Split",
+        "država": "Republika Hrvatska"
+      },
+      "datum_početka": "2025-07-09T22:00:00.000Z",
+      "datum_završetka": "2025-07-11T22:00:00.000Z",
+      "cijena_ulaznica": "120.00",
+      "žanrovi_glazbe": "EDM",
+      "organizator": "Ultra Worldwide",
+      "web_stranica": "https://ultraeurope.com/"
+    },
+    {
+      "festival_id": 5,
+      "naziv_festivala": "Coachella",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Indio",
+        "država": "Kalifornija, SAD"
+      },
+      "datum_početka": "2025-04-10T22:00:00.000Z",
+      "datum_završetka": "2025-04-12T22:00:00.000Z",
+      "cijena_ulaznica": "549.00",
+      "žanrovi_glazbe": "Pop",
+      "organizator": "Goldenvoice",
+      "web_stranica": "https://www.coachella.com/"
+    },
+    {
+      "festival_id": 6,
+      "naziv_festivala": "Sea Star Festival",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Umag",
+        "država": "Republika Hrvatska"
+      },
+      "datum_početka": "2025-05-21T22:00:00.000Z",
+      "datum_završetka": "2025-05-24T22:00:00.000Z",
+      "cijena_ulaznica": "55.00",
+      "žanrovi_glazbe": "Multiple",
+      "organizator": "EXIT tim",
+      "web_stranica": "https://seastarfestival.com/"
+    },
+    {
+      "festival_id": 7,
+      "naziv_festivala": "Glastonbury Festival",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Pilton",
+        "država": "Ujedinjeno Kraljevstvo"
+      },
+      "datum_početka": "2025-06-24T22:00:00.000Z",
+      "datum_završetka": "2025-06-28T22:00:00.000Z",
+      "cijena_ulaznica": "345.00",
+      "žanrovi_glazbe": "Multiple",
+      "organizator": "Michael Eavis, Emily Eavis",
+      "web_stranica": "https://www.glastonburyfestivals.co.uk/"
+    },
+    {
+      "festival_id": 8,
+      "naziv_festivala": "Tomorrowland",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Boom",
+        "država": "Belgija"
+      },
+      "datum_početka": "2025-10-09T22:00:00.000Z",
+      "datum_završetka": "2025-10-11T22:00:00.000Z",
+      "cijena_ulaznica": "350.00",
+      "žanrovi_glazbe": "EDM",
+      "organizator": "We Are One World",
+      "web_stranica": "https://www.tomorrowland.com/"
+    },
+    {
+      "festival_id": 9,
+      "naziv_festivala": "EXIT Festival",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Novi Sad",
+        "država": "Srbija"
+      },
+      "datum_početka": "2025-07-09T22:00:00.000Z",
+      "datum_završetka": "2025-07-12T22:00:00.000Z",
+      "cijena_ulaznica": "125.00",
+      "žanrovi_glazbe": "Multiple",
+      "organizator": "EXIT tim",
+      "web_stranica": "https://www.exitfest.org"
+    },
+    {
+      "festival_id": 10,
+      "naziv_festivala": "Fusion Festival",
+      "lokacija": {
+        "@type": "Place",
+        "grad": "Lärz",
+        "država": "Njemačka"
+      },
+      "datum_početka": "2025-06-24T22:00:00.000Z",
+      "datum_završetka": "2025-06-28T22:00:00.000Z",
+      "cijena_ulaznica": "180.00",
+      "žanrovi_glazbe": "Multiple",
+      "organizator": "Kulturkosmos Müritz",
+      "web_stranica": "https://www.fusion-festival.de"
+    }
+  ]
+}

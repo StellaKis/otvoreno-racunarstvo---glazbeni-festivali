@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="hr">,
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tablica festivala</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 2rem;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background: #030303;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #676e75;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background: #808b97;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1><a href="index.html" >Glazbeni festivali</a></h1>
+
+   <form id="filterForm">
+    <label for="filterInput">Pretraži:</label>
+    <input type="text" id="filterInput"  placeholder="Unesi tekst za pretragu..." />
+
+    <label for="atributSelect">Atribut:</label>
+    <select id="atributSelect">
+      <option value="svi">Svi atributi</option>
+      <option value="naziv_festivala">Naziv festivala</option>
+      <option value="država">Država</option>
+      <option value="grad">Grad</option>
+      <option value="organizator">Organizator</option>
+      <option value="žanrovi_glazbe">Žanrovi glazbe</option>
+      <option value="izvodjaci">Izvođač</option>
+    </select>
+
+    <button type="submit">Filtriraj</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Naziv festivala</th>
+        <th>Država</th>
+        <th>Grad</th>
+        <th>Datum početka</th>
+        <th>Datum završetka</th>
+        <th>Cijena ulaznice (€)</th>
+        <th>Žanrovi</th>
+        <th>Organizator</th>
+        <th>Web stranica</th>
+        <th>Izvođači</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <tr><td colspan="9" style="text-align:center;">Učitavanje podataka...</td></tr>
+    </tbody>
+  </table>
+
+  <form id ="downloadForm">
+    <button type="button" id="downloadJSON">Preuzmi JSON</button>
+    <button type="button" id="downloadCSV">Preuzmi CSV</button>
+  </form>
+
+  <script>
+    const tableBody = document.getElementById("tableBody");
+    const filterForm = document.getElementById("filterForm");
+
+  // Funkcija za dohvaćanje podataka
+  async function fetchFestivali(query = "", atribut = "svi") {
+    const response = await fetch(
+      `http://localhost:3000/api/festivali?query=${encodeURIComponent(query)}&atribut=${encodeURIComponent(atribut)}`
+    );
+    const data = await response.json();
+    renderTable(data);
+  }
+
+  // Prikaz tablice
+  function renderTable(festivali) {
+    tableBody.innerHTML = "";
+    if (festivali.length === 0) {
+      tableBody.innerHTML = "<tr><td colspan='11'>Nema rezultata</td></tr>";
+      return;
+    }
+
+    festivali.forEach(f => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${f.festival_id}</td>
+        <td>${f.naziv_festivala}</td>
+        <td>${f.država}</td>
+        <td>${f.grad}</td>
+        <td>${f.datum_početka}</td>
+        <td>${f.datum_završetka}</td>
+        <td>${f.cijena_ulaznica}</td>
+        <td>${f.žanrovi_glazbe}</td>
+        <td>${f.organizator}</td>
+        <td><a href="${f.web_stranica}" target="_blank">${f.web_stranica}</a></td>
+        <td>${f.izvodjaci || ""}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+  }
+
+  // Prvo dohvaćanje svih festivala
+  fetchFestivali();
+
+  // Obrada forme
+  filterForm.addEventListener("submit", e => {
+    e.preventDefault(); // spriječi reload
+    const query = document.getElementById("filterInput").value.trim();
+    const atribut = document.getElementById("atributSelect").value;
+    fetchFestivali(query, atribut);
+    });
+
+  document.getElementById('downloadJSON').addEventListener('click', () => {
+    const query = document.getElementById('filterInput').value.trim();
+    const atribut = document.getElementById('atributSelect').value;
+    window.open(`http://localhost:3000/api/festivali/json?query=${encodeURIComponent(query)}&atribut=${encodeURIComponent(atribut)}`);
+    });
+
+document.getElementById('downloadCSV').addEventListener('click', () => {
+  const query = document.getElementById('filterInput').value.trim();
+  const atribut = document.getElementById('atributSelect').value;
+  window.open(`http://localhost:3000/api/festivali/csv?query=${encodeURIComponent(query)}&atribut=${encodeURIComponent(atribut)}`);
+});
+
+  </script>
+</body>
+</html>

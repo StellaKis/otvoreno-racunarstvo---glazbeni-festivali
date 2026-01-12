@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glazbeni festivali</title>
+  <meta name="description" content="Otvoreni skup podataka o glazbenim festivalima, uključujući lokacije, datume održavanja i izvođače.">
+  <meta name="keywords" content="glazbeni festivali, otvoreni podaci, dataset, CSV, JSON">
+  <meta name="author" content="Stella Kiš">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    h1, h2, div {
+      text-align: center;
+    }
+
+    .links {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .links a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #007acc;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <nav id="menu"></nav>
+  <script>
+    async function loadMenu() {
+      try {
+        const res = await fetch('http://localhost:3000/api/auth/status', {
+          credentials: 'include'
+        });
+
+        const data = await res.json();
+        const menu = document.getElementById('menu');
+
+        if (!data.authenticated) {
+          menu.innerHTML = `
+            <a href="http://localhost:3000/login">Prijava</a>
+          `;
+        } else {
+          menu.innerHTML = `
+            <a href="http://localhost:3000/logout">Odjava</a> |
+            <a href="profile.html">Korisnički profil</a> | 
+            <a href="#" id="refresh">Osvježi preslike</a> 
+          `;
+
+          document.getElementById('refresh').addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch('http://localhost:3000/api/refresh', {
+      method: 'POST',
+      credentials: 'include'
+    });
+
+    const result = await res.json();
+
+    if (res.ok && result.status === "OK") {
+
+      const downloadFile = (url) => {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = url.split('/').pop(); 
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+
+      downloadFile(result.files.json);
+      downloadFile(result.files.csv);
+
+    } else {
+      alert('Greška pri osvježavanju preslika');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Greška pri osvježavanju preslika');
+  }
+});
+
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadMenu();
+  </script>
+
+  <h1>Glazbeni festivali</h1>
+  <h2>Otvoreni skup podataka</h2>
+  <div>
+    <p>Dostupne verzije podataka:</p>
+    <a href="glazbeni_festivali.csv" download>  <button>CSV format</button></a>
+    <a href="glazbeni_festivali.json" download> <button>JSON format</button></a>
+  </div>
+
+  <p style="text-align:center; margin-top:2rem;">
+    <a href="datatable.html">Prikaži tablični prikaz podataka</a>
+  </p>
+
+
+  <p>
+    Ovaj skup podataka sadrži informacije o glazbenim festivalima održanim u Hrvatskoj i svijetu tijekom 2025. godine. 
+    Skup uključuje podatke o festivalima, izvođačima, datumima održavanja, cijenama ulaznica i organizatorima. 
+    Također prikazuje vezu između festivala i izvođača (jedan izvođač može nastupati na više festivala, jedan festival ima više izvođača).
+  </p>
+  <p> Licencija: Creative Commons Zero v1.0 Universal</p>
+    <p>Autor: Stella Kiš </p>
+    <p>Verzija skupa podataka: 1.0</p>
+    <p>Jezik podataka: hrvatski</p>
+    <p>Broj instanci: 10 festivala; 3-4 izvođača po festivalu</p>
+    <p>Izvor podataka: vlastiti unos i javno dostupni podaci o festivalima</p>
+
+    <h3>Opis tablica</h3>
+    <h4><strong>Tablica festivali</strong> - sadrži osnovne informacije o festivalima</h4>
+    <h4 >Atributi tablice <strong>festivali</strong></h4>
+      <ul>
+        <li><strong>festival_id</strong> – jedinstveni identifikator festivala</li>
+        <li><strong>naziv_festivala</strong> – naziv festivala</li>
+        <li><strong>država</strong> – država u kojoj se festival održava</li>
+        <li><strong>grad</strong> – grad u kojem se festival održava</li>
+        <li><strong>datum_početka</strong> – datum početka festivala</li>
+        <li><strong>datum_završetka</strong> – datum završetka festivala</li>
+        <li><strong>cijena_ulaznica</strong> – cijena ulaznice u eurima</li>
+        <li><strong>žanrovi_glazbe</strong> – glazbeni žanrovi festivala</li>
+        <li><strong>organizator</strong> – osoba ili organizacija koja organizira festival</li>
+        <li><strong>web_stranica</strong> – službena web stranica festivala</li>
+      </ul>
+
+    <h4><strong>Tablica izvodjaci</strong> - sadrži osnovne informacije o izvođačima</h4>
+    <h4>Atributi tablice <strong>izvodjaci</strong></h4>
+      <ul>
+        <li><strong>izvodjac_id</strong>  – jedinstveni identifikator izvođača</li>
+        <li><strong>ime_izvodjaca</strong> – ime ili naziv izvođača</li>
+      </ul>
+
+    <h4><strong>Tablica nastupi</strong> - povezna tablica koja povezuje festivale i izvođače</h4>
+    <h4>Atributi tablice <strong>nastupi</strong></h4>
+      <ul>
+        <li><strong>festival_id</strong>  – ID festivala</li>
+        <li><strong>izvodjac_id</strong>   – ID izvođača</li>
+      </ul>
+
+</body>
+</html>

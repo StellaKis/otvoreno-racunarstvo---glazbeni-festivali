@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hr">,
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tablica festivala</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        margin: 2rem;
+        color: #333;
+        }
+
+        h1, h2 {
+        text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1><a href="index.html" >Glazbeni festivali</a></h1>
+    <h1>Korisnički profil</h1>
+
+    <div id="profil" class="card">
+    </div>
+
+    <script>
+    fetch('http://localhost:3000/api/profile', {
+        credentials: 'include',
+        redirect: 'manual' 
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Greška pri dohvaćanju profila');
+        }
+        return res.json();
+    })
+    .then(data => {
+        const user = data.response;
+        document.getElementById('profil').innerHTML = `
+            <img src="${user.picture || ''}" alt="Profilna slika" />
+            <p><strong>Nickname:</strong> ${user.nickname || '-'}</p>
+            <p><strong>Name:</strong> ${user.name || '-'}</p>                
+            <p><strong>Email:</strong> ${user.email || '-'}</p>
+            <p><strong>Email verificiran:</strong> ${user.email_verified ? 'Da' : 'Ne'}</p>
+            <p><strong>ID:</strong> ${user.sub.split('|')[1]}</p>
+            <p><strong>Provider:</strong> ${user.sub.split('|')[0]}</p>
+            <p><strong>Posljednja izmjena:</strong> ${new Date(user.updated_at).toLocaleString()}</p>
+        `;
+    })
+    .catch(err => {
+        console.error(err);
+        window.location.href = 'index.html';
+    });
+    </script>
+
+
+</body>
+</html>
